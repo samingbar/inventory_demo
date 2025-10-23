@@ -8,5 +8,8 @@ wheels/
 .pytest_cache/
 .coverage
 
+#Node Files
+node_modules/
+
 # Virtual environments
 .venv
