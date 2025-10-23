@@ -10,6 +10,99 @@ wheels/
 
 #Node Files
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+.pnpm-lock.yaml
 
 # Virtual environments
 .venv
+
+# --------------------------------------------------------
+# Node / Next.js
+# --------------------------------------------------------
+node_modules/
+.next/
+out/
+dist/
+build/
+.cache/
+
+# --------------------------------------------------------
+# Logs
+# --------------------------------------------------------
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+bun-debug.log*
+*.log
+
+# --------------------------------------------------------
+# Environment variables
+# --------------------------------------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --------------------------------------------------------
+# OS junk files
+# --------------------------------------------------------
+.DS_Store
+Thumbs.db
+
+# --------------------------------------------------------
+# Editor / IDE settings
+# --------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --------------------------------------------------------
+# TypeScript
+# --------------------------------------------------------
+*.tsbuildinfo
+
+# --------------------------------------------------------
+# Temporal / Local Dev
+# --------------------------------------------------------
+temporalite_data/
+temporalite/
+temporal/
+.temporalio/
+workflow_sandbox/
+# if you generate any worker build outputs:
+worker_build/
+temporal-logs/
+.temporal_cache/
+
+# --------------------------------------------------------
+# Docker / Compose
+# --------------------------------------------------------
+*.pid
+*.seed
+docker-compose.override.yml
+docker-data/
+
+# --------------------------------------------------------
+# Testing / Coverage
+# --------------------------------------------------------
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+jest-cache/
+jest-stare/
+cypress/videos/
+cypress/screenshots/
+
+# --------------------------------------------------------
+# Next.js preview build (for static export)
+# --------------------------------------------------------
+.next/static/chunks/
+.next/cache/
