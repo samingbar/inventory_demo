@@ -1,0 +1,141 @@
+{
+  "orders": {
+    "18ca44f5-b0f6-45f5-ba53-9c4729abe124": {
+      "orderId": "18ca44f5-b0f6-45f5-ba53-9c4729abe124",
+      "item": "USB-C Cable",
+      "state": "shipped",
+      "status": "Shipment arranged",
+      "history": [
+        {
+          "ts": "2025-10-23T15:52:15.682Z",
+          "stage": "created",
+          "message": "Order created",
+          "state": "created"
+        },
+        {
+          "ts": "2025-10-23T15:52:16.438Z",
+          "stage": "inventory_reserved",
+          "message": "Reserved inventory for USB-C Cable",
+          "state": "inventory_reserved"
+        },
+        {
+          "ts": "2025-10-23T15:52:17.241Z",
+          "stage": "payment_verified",
+          "message": "Payment verified",
+          "state": "payment_verified"
+        },
+        {
+          "ts": "2025-10-23T15:52:18.046Z",
+          "stage": "address_verified",
+          "message": "Address verified",
+          "state": "address_verified"
+        },
+        {
+          "ts": "2025-10-23T15:52:18.947Z",
+          "stage": "paid",
+          "message": "Payment processed",
+          "state": "paid"
+        },
+        {
+          "ts": "2025-10-23T15:52:19.853Z",
+          "stage": "shipped",
+          "message": "Shipment arranged",
+          "state": "shipped"
+        }
+      ]
+    },
+    "8c8027b2-8d15-4608-b0e6-42ab76f70922": {
+      "orderId": "8c8027b2-8d15-4608-b0e6-42ab76f70922",
+      "item": "USB-C Cable",
+      "state": "shipped",
+      "status": "Shipment arranged",
+      "history": [
+        {
+          "ts": "2025-10-23T15:52:23.517Z",
+          "stage": "created",
+          "message": "Order created",
+          "state": "created"
+        },
+        {
+          "ts": "2025-10-23T15:52:24.270Z",
+          "stage": "inventory_reserved",
+          "message": "Reserved inventory for USB-C Cable",
+          "state": "inventory_reserved"
+        },
+        {
+          "ts": "2025-10-23T15:52:25.071Z",
+          "stage": "payment_verified",
+          "message": "Payment verified",
+          "state": "payment_verified"
+        },
+        {
+          "ts": "2025-10-23T15:52:25.876Z",
+          "stage": "address_verified",
+          "message": "Address verified",
+          "state": "address_verified"
+        },
+        {
+          "ts": "2025-10-23T15:52:26.778Z",
+          "stage": "paid",
+          "message": "Payment processed",
+          "state": "paid"
+        },
+        {
+          "ts": "2025-10-23T15:52:27.680Z",
+          "stage": "shipped",
+          "message": "Shipment arranged",
+          "state": "shipped"
+        }
+      ]
+    },
+    "bf64608a-0524-4861-b5d6-2b6c6c1f0ec2": {
+      "status": "shipped",
+      "item": "Wireless Mouse",
+      "payment_status": "paid",
+      "shipping_status": "shipped",
+      "address_status": "verified"
+    },
+    "928557fb-bf0a-4351-afa5-c75c948ece01": {
+      "status": "shipped",
+      "item": "Mechanical Keyboard",
+      "payment_status": "paid",
+      "shipping_status": "shipped",
+      "address_status": "verified"
+    },
+    "e40722bf-4673-4a14-81ff-556e563125e1": {
+      "status": "active",
+      "item": null,
+      "payment_status": "pending",
+      "shipping_status": "pending",
+      "address_status": "pending"
+    },
+    "9882c8e4-ec0b-47fe-a5c7-0c1699b8fae4": {
+      "status": "active",
+      "item": null,
+      "payment_status": "pending",
+      "shipping_status": "pending",
+      "address_status": "pending"
+    },
+    "03c8621f-57ab-4591-9d2b-9ffbceaa4cde": {
+      "status": "shipped",
+      "item": "Wireless Mouse",
+      "payment_status": "paid",
+      "shipping_status": "shipped",
+      "address_status": "verified"
+    },
+    "80070df9-5278-49af-936a-00f595791688": {
+      "status": "active",
+      "item": null,
+      "payment_status": "pending",
+      "shipping_status": "pending",
+      "address_status": "pending"
+    },
+    "5d60f5b5-05c0-4514-9d01-34d78ac43cef": {
+      "status": "active",
+      "item": null,
+      "payment_status": "pending",
+      "shipping_status": "pending",
+      "address_status": "pending"
+    }
+  }
+}
