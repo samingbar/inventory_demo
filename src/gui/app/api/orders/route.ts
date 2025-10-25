@@ -3,12 +3,16 @@ import { startOrder } from "../../lib/workflowSim";
 import { getTemporalClient } from "../../lib/temporal";
 import { randomUUID } from "node:crypto";
 
+// POST /api/orders
+// Starts an order either via Temporal (default) or the local simulator.
+
 export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}));
   const item = String(body?.item || "").trim();
   if (!item) return NextResponse.json({ error: "Missing item" }, { status: 400 });
 
-  if (process.env.USE_TEMPORAL === "1") {
+  // Default to Temporal unless explicitly disabled with USE_TEMPORAL=0
+  if (process.env.USE_TEMPORAL !== "0") {
     try {
       const client = await getTemporalClient();
       const workflowId = `order-${randomUUID()}`;

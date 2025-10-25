@@ -12,10 +12,10 @@ What's included
 Run the GUI
 1. Open a new terminal and change into the GUI folder:
    - `cd src/gui`
-2. Install deps and start the dev server:
+2. Install deps and start the dev server (defaults to Temporal backend):
    - `npm install`
    - `npm run dev`
-3. Open the app at http://localhost:3000
+3. Open http://localhost:3000
 
 Data storage
 - Inventory: `src/db/inventory.json`
@@ -23,11 +23,10 @@ Data storage
 
 The simulator updates these files as an order progresses so the UI can poll and render status.
 
-Temporal integration (optional)
-- The API is structured so it can be swapped to call a real Temporal Client.
-- To integrate with your Worker:
-  - Replace the simulator in `src/gui/app/api/orders/route.ts` with a call to your Temporal Client to start the workflow (e.g. workflow type `OrderWorkflow` on your task queue), and
-  - Implement `GET /api/orders/:id` to query current workflow state (via queries/signals/describe) and return the same shape used by the UI.
+Temporal backend (default)
+- The GUI uses Temporal by default if a server is reachable at `localhost:7233` and your worker is running on task queue `order-task-queue`.
+- To force the simulator instead, run with `USE_TEMPORAL=0 npm run dev`.
+- Failures from workflows (e.g., out of stock) are surfaced to the UI with a helpful message.
 
 Python worker notes
 - The current Python workflow/activities under `src/order_workflow` appear incomplete and will likely need fixes before running against a Temporal Server.

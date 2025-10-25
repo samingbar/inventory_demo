@@ -8,7 +8,7 @@
     "Wireless Mouse": {
       "sku": "SKU-1001",
       "price": 24.99,
-      "available": 148,
+      "available": 150,
       "reserved": 10,
       "location": "WH-SEA-01",
       "updated_at": "2025-10-23T00:00:00Z"
@@ -16,7 +16,7 @@
     "Mechanical Keyboard": {
       "sku": "SKU-2002",
       "price": 89.5,
-      "available": 5,
+      "available": 6,
       "reserved": 5,
       "location": "WH-SEA-01",
       "updated_at": "2025-10-23T00:00:00Z"
@@ -24,7 +24,7 @@
     "USB-C Cable": {
       "sku": "SKU-3003",
       "price": 8.99,
-      "available": 498,
+      "available": 500,
       "reserved": 25,
       "location": "WH-SFO-02",
       "updated_at": "2025-10-23T00:00:00Z"

@@ -1,5 +1,8 @@
 import { Connection, Client } from "@temporalio/client";
 
+// Small Temporal client factory with lazy caching.
+// Uses TEMPORAL_ADDRESS and TEMPORAL_NAMESPACE env vars if provided.
+
 let cached: Client | null = null;
 
 export async function getTemporalClient() {
@@ -10,4 +13,3 @@ export async function getTemporalClient() {
   cached = new Client({ connection, namespace });
   return cached;
 }
-

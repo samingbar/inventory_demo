@@ -1,5 +1,8 @@
 "use client";
 
+// Demo checkout UI: starts an order and polls for progress.
+// Works with Temporal by default, or a local simulator when USE_TEMPORAL=0.
+
 import { useEffect, useMemo, useState } from "react";
 
 type InventoryItem = {
@@ -30,6 +33,7 @@ type Order = {
   error?: string;
 };
 
+// Small fetch helper with typed return for convenience
 async function fetchJSON<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, init);
   if (!res.ok) throw new Error(await res.text());
@@ -44,6 +48,7 @@ export default function Page() {
   const [order, setOrder] = useState<Order | null>(null);
   const [polling, setPolling] = useState(false);
 
+  // Load inventory once on page load
   useEffect(() => {
     fetchJSON<{ items: Inventory }>("/api/inventory")
       .then((d) => {
@@ -54,6 +59,7 @@ export default function Page() {
       .catch((e) => console.error(e));
   }, []);
 
+  // Fixed stage labels rendered as a timeline
   const stages = useMemo(
     () => [
       { key: "created", label: "Order Created" },
@@ -66,6 +72,7 @@ export default function Page() {
     []
   );
 
+  // Start polling once we have an order ID
   useEffect(() => {
     if (!orderId) return;
     setPolling(true);
@@ -90,6 +97,7 @@ export default function Page() {
     };
   }, [orderId]);
 
+  // Start a new order by POSTing the selected item
   async function placeOrder() {
     if (!selectedItem) return;
     setPlacing(true);

@@ -1,6 +1,9 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
+// Minimal JSON "DB" helpers used by the simulator and inventory endpoint.
+// Keeping everything file-based makes the demo easy to run offline.
+
 const dbRoot = path.join(process.cwd(), "..", "db");
 const statePath = path.join(dbRoot, "state.json");
 const inventoryPath = path.join(dbRoot, "inventory.json");
@@ -23,20 +26,24 @@ export type Order = {
   error?: string;
 };
 
+// Load the current orders state from disk
 export async function getState(): Promise<{ orders: Record<string, Order> }> {
   const raw = await fs.readFile(statePath, "utf8");
   return JSON.parse(raw);
 }
 
+// Persist the full orders state to disk
 export async function putState(next: { orders: Record<string, Order> }) {
   await fs.writeFile(statePath, JSON.stringify(next, null, 2));
 }
 
+// Fetch a single order by id
 export async function getOrder(id: string): Promise<Order | undefined> {
   const s = await getState();
   return s.orders[id];
 }
 
+// Insert or update an order, then persist
 export async function upsertOrder(order: Order) {
   const s = await getState();
   s.orders[order.orderId] = order;
@@ -58,6 +65,7 @@ export async function getInventory(): Promise<{
   return JSON.parse(raw);
 }
 
+// Atomically update a single inventory item using a small mutation function
 export async function updateInventoryItem(name: string, fn: (item: any) => void) {
   const data = await getInventory();
   const item = data.items[name];
@@ -65,4 +73,3 @@ export async function updateInventoryItem(name: string, fn: (item: any) => void)
   fn(item);
   await fs.writeFile(inventoryPath, JSON.stringify(data, null, 2));
 }
-

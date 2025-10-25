@@ -2,10 +2,15 @@ import { NextResponse } from "next/server";
 import { getOrder } from "../../../lib/db";
 import { getTemporalClient } from "../../../lib/temporal";
 
+// GET /api/orders/:id
+// Polls a running workflow for progress. If Temporal is enabled, attempts a
+// query first and falls back to describe + failure extraction.
+
 type Params = { params: { id: string } };
 
 export async function GET(_req: Request, { params }: Params) {
-  if (process.env.USE_TEMPORAL === "1") {
+  // Default to Temporal unless explicitly disabled with USE_TEMPORAL=0
+  if (process.env.USE_TEMPORAL !== "0") {
     try {
       const client = await getTemporalClient();
       const handle = client.workflow.getHandle(params.id);
@@ -15,7 +20,7 @@ export async function GET(_req: Request, { params }: Params) {
         const q = (await (handle as any).query("status")) || (await (handle as any).query("progress"));
         return NextResponse.json(q);
       } catch {}
-      // Fall back to describe for coarse status
+      // Fall back to describe for coarse status when queries are unavailable
       const d = await handle.describe();
       const status = d.status.name || String(d.status);
       const completed = status.toLowerCase() === "completed";

@@ -3,9 +3,11 @@ import { setTimeout as delay } from "node:timers/promises";
 import { getOrder, upsertOrder, updateInventoryItem } from "./db";
 
 /**
- * Lightweight local simulator that mirrors the Python activities
- * so the UI can demonstrate workflow progress without requiring
- * a running Worker. Each step writes state to src/db/state.json.
+ * Lightweight local simulator that mirrors the Python activities so the UI can
+ * demonstrate workflow progress without a running Worker. Each step writes to
+ * files under src/db/ just like the activities do.
+ *
+ * Use this when USE_TEMPORAL=0 to keep demos fully local/offline.
  */
 
 export async function startOrder({ item }: { item: string }) {
@@ -21,7 +23,7 @@ export async function startOrder({ item }: { item: string }) {
   };
   await upsertOrder(base);
 
-  // Fire-and-forget background progression
+  // Fire-and-forget background progression to simulate async workflow steps
   void (async () => {
     try {
       // Reserve inventory
@@ -78,4 +80,3 @@ async function fail(orderId: string, error: string) {
   cur.history.push({ ts: new Date().toISOString(), stage: "failed", message: error, state: "failed" });
   await upsertOrder(cur);
 }
-

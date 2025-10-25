@@ -1,3 +1,4 @@
+// Minimal Next.js layout used for demos. Keep markup simple and readable.
 export const metadata = { title: "Temporal Order Demo" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -7,7 +8,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div style={{ maxWidth: 980, margin: "32px auto", padding: "0 16px" }}>
           <h1 style={{ margin: "0 0 16px" }}>🛒 Temporal Order Demo</h1>
           <p style={{ color: "#555", marginTop: 0 }}>
-            Start an order and watch each step progress. Works with Temporal or a local simulator.
+            Start an order and watch each step progress.
           </p>
           {children}
         </div>
